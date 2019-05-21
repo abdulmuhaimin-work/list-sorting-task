@@ -12,7 +12,16 @@ defmodule Listsorting do
       :world
 
   """
+
   def hello do
     :world
   end
+
+  def mapcompare([mapa,mapb | tail]) do
+    if mapb[:value] > mapa[:value] do
+      [mapb,mapa | tail]
+      else [mapa,mapb | tail]
+    end
+  end
+
 end
