@@ -17,11 +17,20 @@ defmodule Listsorting do
     :world
   end
 
-  def mapcompare([mapa,mapb | tail]) do
+  def mapcompare(list) do
+    mapcompare(list, [])
+  end
+
+  def mapcompare([mapa,mapb | tail], acc) do
     if mapb[:value] > mapa[:value] do
-      [mapb,mapa | tail]
-      else [mapa,mapb | tail]
+      mapcompare([mapa | tail], acc ++ [mapb])
+      else mapcompare([mapb | tail], acc ++ [mapa])
     end
   end
+
+  def mapcompare([mapa], acc) do
+    acc ++ [mapa]
+  end
+
 
 end
